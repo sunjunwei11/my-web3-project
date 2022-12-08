@@ -49,6 +49,9 @@ import {
   addToken2Metamask,
 } from '@/wallet';
 
+import { useCurrentAddressStore } from '@/store';
+
+import { resetToken } from './utils';
 import { useAddressInfo, useMintToken } from './hooks';
 
 // 获取地址相关逻辑
@@ -75,6 +78,16 @@ const doConnectWallet = async () => {
 onMounted(async () => {
   await init();
 });
+
+// We reinitialize it whenever the user changes their account.
+window.ethereum &&
+  window.ethereum!.on('accountsChanged', async (accounts) => {
+    resetToken();
+    const currentAddressStore = useCurrentAddressStore();
+    const { setCurrentAddress } = currentAddressStore;
+    setCurrentAddress((accounts as string[])[0]);
+    await init();
+  });
 </script>
 
 <style lang="scss" scoped>

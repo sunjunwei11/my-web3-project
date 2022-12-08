@@ -12,10 +12,6 @@ async function connectWallet() {
   const currentAddressStore = useCurrentAddressStore();
   const { setCurrentAddress } = currentAddressStore;
   setCurrentAddress(selectedAddress);
-
-  //   initializeEthers(selectedAddress);
-
-  //   console.log(selectedAddress);
 }
 
 export { connectWallet };

@@ -58,7 +58,11 @@ import {
   initializeNftContract,
   updateNftBalance,
 } from '@/wallet';
-import NftsCard from './NftsCard.vue';
+
+import { useCurrentAddressStore } from '@/store';
+import NftsCard from './components/NftsCard.vue';
+
+import { resetNft } from './utils';
 
 import { useGetNfts, useAddressInfo, useMint } from './hooks';
 
@@ -99,6 +103,16 @@ const doConnectWallet = async () => {
   await connectWallet();
   await init();
 };
+
+// We reinitialize it whenever the user changes their account.
+window.ethereum &&
+  window.ethereum!.on('accountsChanged', async (accounts) => {
+    resetNft();
+    const currentAddressStore = useCurrentAddressStore();
+    const { setCurrentAddress } = currentAddressStore;
+    setCurrentAddress((accounts as string[])[0]);
+    await init();
+  });
 </script>
 
 <style scoped lang="scss">

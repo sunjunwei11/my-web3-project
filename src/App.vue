@@ -3,7 +3,7 @@
     <el-header>
       <HeaderCom />
     </el-header>
-    <el-container class="bottom-info">
+    <el-container class="container-info">
       <div v-if="!hasMetaMask" class="no-metamask">
         Need install Metamask first
       </div>
@@ -21,7 +21,7 @@
 import HeaderCom from '@/components/HeaderCom.vue';
 import SideMenu from '@/components/SideMenu.vue';
 import { useRoute } from 'vue-router';
-import { watch, ref } from 'vue';
+import { watch, onMounted, ref } from 'vue';
 import { useNetworkStore } from '@/store';
 import detectEthereumProvider from '@metamask/detect-provider';
 
@@ -32,9 +32,9 @@ const init = async () => {
   // 检测是否安装了钱包
   const provider = await detectEthereumProvider();
   if (provider) {
-    loading.value = false;
     hasMetaMask.value = true;
   }
+  loading.value = false;
 };
 init();
 
@@ -45,8 +45,18 @@ watch(
   () => {
     const { checkNetWork } = useNetworkStore();
     checkNetWork(route);
+  },
+  {
+    immediate: true,
   }
 );
+
+onMounted(() => {
+  window.ethereum &&
+    window.ethereum.on('chainChanged', () => {
+      window.location.reload();
+    });
+});
 </script>
 
 <style lang="scss" scoped>
@@ -62,7 +72,7 @@ watch(
   padding: 0;
 }
 
-.bottom-info {
+.container-info {
   margin-top: 20px;
 }
 .no-metamask {
