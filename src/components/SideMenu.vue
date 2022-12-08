@@ -6,7 +6,7 @@
         class="menu-item"
         activeClass="menu-item-actived"
       >
-        <el-icon><Apple /></el-icon>
+        <el-icon><IEpApple /></el-icon>
         <span>Mint Token</span>
       </router-link>
     </el-menu-item>
@@ -16,7 +16,7 @@
         class="menu-item"
         activeClass="menu-item-actived"
       >
-        <el-icon><MilkTea /></el-icon>
+        <el-icon><IEpMilkTea /></el-icon>
         <span>Mint Nft</span>
       </router-link>
     </el-menu-item>

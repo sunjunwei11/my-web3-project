@@ -40,11 +40,11 @@
 
 ## 集成 element-plus
 
-按需引入 element-plus 组件
+自动导入使用到的 element-plus 组件
 
 ## 集成 element-plus/icons-vue
 
-可以方便使用 element-plus 推荐的 icon
+自动导入使用到的 Icon
 
 # 基本代码结构
 
@@ -103,9 +103,6 @@ src
 |   ├─index.ts // 统一导出路由
 |   ├─modules // 路由按功能划分成模块
 |   |    └base.ts
-├─plugins // 插件
-|    ├─elememtByNeed.ts // element按需引入逻辑
-|    └elementIcons.ts // element icon引入逻辑
 ├─contract // 合约
 |    ├─BuildWeb3Token.json
 |    └MyDigiNft.json

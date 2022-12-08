@@ -22,6 +22,8 @@ declare module '@vue/runtime-core' {
     ElTag: typeof import('element-plus/es')['ElTag'];
     HeaderCom: typeof import('./src/components/HeaderCom.vue')['default'];
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default'];
+    IEpApple: typeof import('~icons/ep/apple')['default'];
+    IEpMilkTea: typeof import('~icons/ep/milk-tea')['default'];
     RouterLink: typeof import('vue-router')['RouterLink'];
     RouterView: typeof import('vue-router')['RouterView'];
     SideMenu: typeof import('./src/components/SideMenu.vue')['default'];
