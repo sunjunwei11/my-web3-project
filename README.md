@@ -2,6 +2,16 @@
 
 此项目使用 Vue 3 + TypeScript + Vite 作为技术栈
 
+# 项目功能
+
+此项目实现了目前功能主要为两个：
+
+1、Mint Token 和展示 Token 相关信息
+
+2、Mint Nft 和展示 Nft 相关信息
+
+目录结构请查看下方`基本代码结构`
+
 # 集成工程化所需技术
 
 ## 使用 pnpm 管理 npm 包
@@ -107,5 +117,4 @@ src
 |   |  └vue.svg
 |   ├─images
 |   |   └logo.png
-
 ```
