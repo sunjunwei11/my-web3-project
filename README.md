@@ -119,15 +119,15 @@ src
 |   ├─images
 |   |   └logo.png
 ├─apis
-|  ├─index.ts // 统一导出接口
-|  ├─modules // 不同的业务将接口放到不同的目录
-|  |    ├─index.ts
-|  |    ├─nft
-|  |    |  ├─index.ts
-|  |    |  └types.ts
-|  ├─instances // Axios实例管理
-|  |     ├─commonConfig.ts // Axios实例通用的一些配置
-|  |     ├─create.ts // 创建Axios实例，允许创建多个拥有不同配置的Axios实例
-|  |     ├─index.ts
-|  |     └types.ts
+|  ├─index.ts // 统一导出apis里的接口
+|  ├─modules // 将不同业务的接口拆分到不同模块
+|  |    ├─index.ts // 统一导出不同业务接口
+|  |    ├─nft // nft业务
+|  |    |  ├─index.ts // nft业务接口
+|  |    |  └types.ts // nft业务接口类型定义
+|  ├─instances // Axios实例
+|  |     ├─commonConfig.ts // 实例的通用配置
+|  |     ├─create.ts // 创建实例逻辑
+|  |     ├─index.ts // 导出实例
+|  |     └types.ts // 实例相关的类型定义
 ```
