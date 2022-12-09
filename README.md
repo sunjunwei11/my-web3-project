@@ -38,6 +38,10 @@
 
 使用 pinia 做状态管理
 
+## 集成 Axios
+
+使用 Axios 请求数据
+
 ## 集成 element-plus
 
 自动导入使用到的 element-plus 组件
@@ -114,4 +118,16 @@ src
 |   |  └vue.svg
 |   ├─images
 |   |   └logo.png
+├─apis
+|  ├─index.ts // 统一导出接口
+|  ├─modules // 不同的业务将接口放到不同的目录
+|  |    ├─index.ts
+|  |    ├─nft
+|  |    |  ├─index.ts
+|  |    |  └types.ts
+|  ├─instances // Axios实例管理
+|  |     ├─commonConfig.ts // Axios实例通用的一些配置
+|  |     ├─create.ts // 创建Axios实例，允许创建多个拥有不同配置的Axios实例
+|  |     ├─index.ts
+|  |     └types.ts
 ```

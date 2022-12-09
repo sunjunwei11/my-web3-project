@@ -5,11 +5,11 @@ export interface AttributeItem {
 
 export interface NftItem {
   attributes: AttributeItem[];
-  cloth: string;
   description: string;
-  hairColor: string;
-  hairLength: string;
   image: string;
   name: string;
-  tokenId: number;
+  cloth?: string;
+  hairColor?: string;
+  hairLength?: string;
+  tokenId?: number;
 }

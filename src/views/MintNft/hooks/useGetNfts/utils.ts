@@ -3,11 +3,13 @@ import {
   getTotalSupply,
   getTokenOfOwnerByIndex,
 } from '@/wallet/interactWithNft';
-import axios from 'axios';
 import { watch } from 'vue';
 import { useCurrentAddressStore, useNftStore } from '@/store';
 import { storeToRefs } from 'pinia';
+import { nftApi } from '@/apis';
 import { NftItem, AttributeItem } from '../../types';
+
+const { getNftJson } = nftApi;
 
 let allNfts: NftItem[] = [];
 let myNfts: NftItem[] = [];
@@ -64,11 +66,9 @@ async function getJsonByTokenIds(tokenIds: number[]) {
       const urlRes = await Promise.all(temp);
       const jsonPromiseArray = [];
       for (let j = 0; j < urlRes.length; j++) {
-        jsonPromiseArray.push(axios.get(urlRes[j]));
+        jsonPromiseArray.push(getNftJson(urlRes[j]));
       }
-      const jsonRes = [...(await Promise.all(jsonPromiseArray))].map(
-        (item) => (item as any).data
-      );
+      const jsonRes: NftItem[] = await Promise.all(jsonPromiseArray);
       nfts = [...nfts, ...jsonRes];
       temp = [];
     }
